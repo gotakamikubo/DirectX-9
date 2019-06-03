@@ -55,7 +55,7 @@ INT WINAPI WinMain(HINSTANCE hInst, HINSTANCE hPrevInst, LPSTR szStr, INT iCmdSh
 
 	void InitPresentParameters(HWND);
 
-	static char szAppName[] = "STEP3";
+	static char szAppName[] = "STEP4";
 
 	WNDCLASS wndclass;
 

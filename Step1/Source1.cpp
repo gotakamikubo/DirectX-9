@@ -9,7 +9,7 @@ INT WINAPI WinMain(HINSTANCE hInst, HINSTANCE hPrevInst, LPSTR szStr, INT iCmdSh
 
 	MSG msg;
 	void InitPresentParameters(HWND);
-	static char szAppName[] = "Test Polygon";
+	static char szAppName[] = "STEP1";
 	WNDCLASSEX wndclass;
 	//Window‰Šú‰»î•ñ‚Ìİ’è
 	wndclass.cbSize = sizeof(wndclass);
