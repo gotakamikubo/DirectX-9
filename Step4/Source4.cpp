@@ -102,60 +102,34 @@ INT WINAPI WinMain(HINSTANCE hInst, HINSTANCE hPrevInst, LPSTR szStr, INT iCmdSh
 				//テクスチャ貼り付け開始
 				pDevice->BeginScene();
 				UpdateKeyStatus();
-				//終了時の処理
-
 				if (GetKeyStatus(DIK_RETURN)) {
-
 					break;
-
 				}
-
-				//それぞれのキーに対応する方向に絵を動かす処理
-
 				//上キーを押されたとき
-
 				if (GetKeyStatus(DIK_UP)) {
-
 					v[0].y -= 5.0f;
-
 					v[1].y -= 5.0f;
-
 					v[2].y -= 5.0f;
-
 					v[3].y -= 5.0f;
-
 				}
 
 				//下キーを押されたとき
-
 				if (GetKeyStatus(DIK_DOWN)) {
-
 					v[0].y += 5.0f;
-
 					v[1].y += 5.0f;
-
 					v[2].y += 5.0f;
-
 					v[3].y += 5.0f;
-
 				}
 
 				//左キーを押されたとき
-
 				if (GetKeyStatus(DIK_LEFT)) {
-
 					v[0].x -= 5.0f;
-
 					v[1].x -= 5.0f;
-
 					v[2].x -= 5.0f;
-
 					v[3].x -= 5.0f;
-
 				}
 
 				//右キーを押されたとき
-
 				if (GetKeyStatus(DIK_RIGHT)) {
 					v[0].x += 5.0f;
 					v[1].x += 5.0f;
