@@ -32,7 +32,7 @@ INT WINAPI WinMain(HINSTANCE hInst, HINSTANCE hPrevInst, LPSTR szStr, INT iCmdSh
 	HWND hWnd = NULL;
 
 
-	#define SetFVFC (D3DFVF_XYZRHW | D3DFVF_DIFFUSE | D3DFVF_TEX1)
+#define SetFVFC (D3DFVF_XYZRHW | D3DFVF_DIFFUSE | D3DFVF_TEX1)
 
 	DWORD SyncPrev = timeGetTime();
 	DWORD SyncCurr;
@@ -63,10 +63,10 @@ INT WINAPI WinMain(HINSTANCE hInst, HINSTANCE hPrevInst, LPSTR szStr, INT iCmdSh
 
 	if (FAILED(InitD3d(hWnd))) {
 		return 0;
-    }
+	}
 	timeBeginPeriod(1);
 	ZeroMemory(&msg, sizeof(msg));
-	while (msg.message!=WM_QUIT){
+	while (msg.message != WM_QUIT) {
 		Sleep(1);
 		if (PeekMessage(&msg, NULL, 0U, 0U, PM_REMOVE)) {
 			TranslateMessage(&msg);
@@ -76,7 +76,7 @@ INT WINAPI WinMain(HINSTANCE hInst, HINSTANCE hPrevInst, LPSTR szStr, INT iCmdSh
 			SyncCurr = timeGetTime();
 			//1秒間に60回この中に入る
 			if (SyncCurr - SyncPrev >= 1000 / 60) {
-			    //ウィンドウを黒色でクリア
+				//ウィンドウを黒色でクリア
 				pDevice->Clear(0, NULL, D3DCLEAR_TARGET, D3DCOLOR_XRGB(0x00, 0x00, 0x00), 1.0, 0);
 
 				pDevice->SetFVF(SetFVFC);
@@ -98,9 +98,9 @@ INT WINAPI WinMain(HINSTANCE hInst, HINSTANCE hPrevInst, LPSTR szStr, INT iCmdSh
 	timeEndPeriod(1);
 	FreeDx();
 	return (INT)msg.wParam;
-} 
+}
 //コールバック関数
-LRESULT CALLBACK WndProc(HWND hWnd,UINT iMsg,WPARAM wParam,LPARAM lParam){
+LRESULT CALLBACK WndProc(HWND hWnd, UINT iMsg, WPARAM wParam, LPARAM lParam) {
 	switch (iMsg)
 	{
 	case WM_DESTROY:
@@ -159,5 +159,3 @@ VOID FreeDx() {
 
 	pD3d = nullptr;
 }
-
-
