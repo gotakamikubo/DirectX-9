@@ -1,4 +1,4 @@
-#include<Windows.h>
+ï»¿#include<Windows.h>
 #include<d3dx9.h>
 
 LPDIRECT3D9 pD3d;
@@ -11,7 +11,7 @@ INT WINAPI WinMain(HINSTANCE hInst, HINSTANCE hPrevInst, LPSTR szStr, INT iCmdSh
 	void InitPresentParameters(HWND);
 	static char szAppName[] = "STEP1";
 	WNDCLASSEX wndclass;
-	//Window‰Šú‰»î•ñ‚Ìİ’è
+	//WindowåˆæœŸåŒ–æƒ…å ±ã®è¨­å®š
 	wndclass.cbSize = sizeof(wndclass);
 	wndclass.style = CS_HREDRAW | CS_VREDRAW;
 	wndclass.lpfnWndProc = WndProc;
@@ -23,9 +23,9 @@ INT WINAPI WinMain(HINSTANCE hInst, HINSTANCE hPrevInst, LPSTR szStr, INT iCmdSh
 	wndclass.lpszMenuName = NULL;
 	wndclass.lpszClassName = szAppName;
 	wndclass.hIconSm = LoadIcon(NULL, IDI_APPLICATION);
-	//Window‚Ì“o˜^
+	//Windowã®ç™»éŒ²
 	RegisterClassEx(&wndclass);
-	//Window‚Ì¶¬
+	//Windowã®ç”Ÿæˆ
 	hWnd = CreateWindow(szAppName, szAppName, WS_OVERLAPPEDWINDOW, 0, 0, 640, 480, NULL, NULL, hInst, NULL);
 	ShowWindow(hWnd, SW_SHOW);
 	UpdateWindow(hWnd);
@@ -43,7 +43,7 @@ INT WINAPI WinMain(HINSTANCE hInst, HINSTANCE hPrevInst, LPSTR szStr, INT iCmdSh
 	}
 	
 
-//ƒR[ƒ‹ƒoƒbƒNŠÖ”
+//ã‚³ãƒ¼ãƒ«ãƒãƒƒã‚¯é–¢æ•°
 LRESULT CALLBACK WndProc(HWND hWnd, UINT iMsg, WPARAM wParam, LPARAM lParam) {
 	switch (iMsg)
 	{
@@ -53,7 +53,7 @@ LRESULT CALLBACK WndProc(HWND hWnd, UINT iMsg, WPARAM wParam, LPARAM lParam) {
 	case WM_KEYDOWN:
 		switch ((CHAR)wParam)
 		{
-			//ESC‚ğ‰Ÿ‚µ‚ÄÀsI—¹
+			//ESCã‚’æŠ¼ã—ã¦å®Ÿè¡Œçµ‚äº†
 		case VK_ESCAPE:
 			PostQuitMessage(0);
 			break;

@@ -1,4 +1,4 @@
-#include<Windows.h>
+ï»¿#include<Windows.h>
 #include<d3dx9.h>
 
 #pragma comment(lib,"winmm.lib")
@@ -41,7 +41,7 @@ INT WINAPI WinMain(HINSTANCE hInst, HINSTANCE hPrevInst, LPSTR szStr, INT iCmdSh
 	void InitPresentParameters(HWND);
 	static char szAppName[] = "STEP2";
 	WNDCLASSEX wndclass;
-	//Window‰Šú‰»î•ñ‚Ìİ’è
+	//WindowåˆæœŸåŒ–æƒ…å ±ã®è¨­å®š
 	wndclass.cbSize = sizeof(wndclass);
 	wndclass.style = CS_HREDRAW | CS_VREDRAW;
 	wndclass.lpfnWndProc = WndProc;
@@ -53,9 +53,9 @@ INT WINAPI WinMain(HINSTANCE hInst, HINSTANCE hPrevInst, LPSTR szStr, INT iCmdSh
 	wndclass.lpszMenuName = NULL;
 	wndclass.lpszClassName = szAppName;
 	wndclass.hIconSm = LoadIcon(NULL, IDI_APPLICATION);
-	//Window‚Ì“o˜^
+	//Windowã®ç™»éŒ²
 	RegisterClassEx(&wndclass);
-	//Window‚Ì¶¬
+	//Windowã®ç”Ÿæˆ
 	hWnd = CreateWindow(szAppName, szAppName, WS_OVERLAPPEDWINDOW, 0, 0, 640, 480, NULL, NULL, hInst, NULL);
 	ShowWindow(hWnd, SW_SHOW);
 	UpdateWindow(hWnd);
@@ -74,21 +74,21 @@ INT WINAPI WinMain(HINSTANCE hInst, HINSTANCE hPrevInst, LPSTR szStr, INT iCmdSh
 		}
 		else {
 			SyncCurr = timeGetTime();
-			//1•bŠÔ‚É60‰ñ‚±‚Ì’†‚É“ü‚é
+			//1ç§’é–“ã«60å›ã“ã®ä¸­ã«å…¥ã‚‹
 			if (SyncCurr - SyncPrev >= 1000 / 60) {
-				//ƒEƒBƒ“ƒhƒE‚ğ•F‚ÅƒNƒŠƒA
+				//ã‚¦ã‚£ãƒ³ãƒ‰ã‚¦ã‚’é»’è‰²ã§ã‚¯ãƒªã‚¢
 				pDevice->Clear(0, NULL, D3DCLEAR_TARGET, D3DCOLOR_XRGB(0x00, 0x00, 0x00), 1.0, 0);
 
 				pDevice->SetFVF(SetFVFC);
-				//ƒeƒNƒXƒ`ƒƒ“\‚è•t‚¯ŠJn
+				//ãƒ†ã‚¯ã‚¹ãƒãƒ£è²¼ã‚Šä»˜ã‘é–‹å§‹
 				pDevice->BeginScene();
-				//ƒeƒNƒXƒ`ƒƒ‚Ì“\‚è•t‚¯
+				//ãƒ†ã‚¯ã‚¹ãƒãƒ£ã®è²¼ã‚Šä»˜ã‘
 				pDevice->SetTexture(0, pTexture);
 
 				pDevice->DrawPrimitiveUP(D3DPT_TRIANGLEFAN, 2, v, sizeof(CUSTOMVERTEX));
-				//ƒeƒNƒXƒ`ƒƒ‚Ì“\‚è•t‚¯Š®—¹
+				//ãƒ†ã‚¯ã‚¹ãƒãƒ£ã®è²¼ã‚Šä»˜ã‘å®Œäº†
 				pDevice->EndScene();
-				//ƒEƒBƒ“ƒhƒE‚É•\¦
+				//ã‚¦ã‚£ãƒ³ãƒ‰ã‚¦ã«è¡¨ç¤º
 				pDevice->Present(0, 0, 0, 0);
 
 				SyncPrev = SyncCurr;
@@ -99,7 +99,7 @@ INT WINAPI WinMain(HINSTANCE hInst, HINSTANCE hPrevInst, LPSTR szStr, INT iCmdSh
 	FreeDx();
 	return (INT)msg.wParam;
 }
-//ƒR[ƒ‹ƒoƒbƒNŠÖ”
+//ã‚³ãƒ¼ãƒ«ãƒãƒƒã‚¯é–¢æ•°
 LRESULT CALLBACK WndProc(HWND hWnd, UINT iMsg, WPARAM wParam, LPARAM lParam) {
 	switch (iMsg)
 	{
@@ -109,7 +109,7 @@ LRESULT CALLBACK WndProc(HWND hWnd, UINT iMsg, WPARAM wParam, LPARAM lParam) {
 	case WM_KEYDOWN:
 		switch ((CHAR)wParam)
 		{
-			//ESC‚ğ‰Ÿ‚µ‚ÄÀsI—¹
+			//ESCã‚’æŠ¼ã—ã¦å®Ÿè¡Œçµ‚äº†
 		case VK_ESCAPE:
 			PostQuitMessage(0);
 			break;
@@ -122,7 +122,7 @@ LRESULT CALLBACK WndProc(HWND hWnd, UINT iMsg, WPARAM wParam, LPARAM lParam) {
 
 HRESULT InitD3d(HWND hWnd) {
 	if (NULL == (pD3d = Direct3DCreate9(D3D_SDK_VERSION))) {
-		MessageBox(0, "Direct3D‚Ìì¬‚É¸”s‚µ‚Ü‚µ‚½", "", MB_OK);
+		MessageBox(0, "Direct3Dã®ä½œæˆã«å¤±æ•—ã—ã¾ã—ãŸ", "", MB_OK);
 		return E_FAIL;
 	}
 
@@ -135,14 +135,14 @@ HRESULT InitD3d(HWND hWnd) {
 	d3dpp.Windowed = TRUE;
 
 	if (FAILED(pD3d->CreateDevice(D3DADAPTER_DEFAULT, D3DDEVTYPE_HAL, hWnd, D3DCREATE_MIXED_VERTEXPROCESSING, &d3dpp, &pDevice))) {
-		MessageBox(0, "HALƒ‚[ƒh‚ÅDIRECT3DƒfƒoƒCƒX‚ğì¬‚Å‚«‚Ü‚¹‚ñ\nREFƒ‚[ƒh‚ÅÄs‚µ‚Ü‚·", NULL, MB_OK);
+		MessageBox(0, "HALãƒ¢ãƒ¼ãƒ‰ã§DIRECT3Dãƒ‡ãƒã‚¤ã‚¹ã‚’ä½œæˆã§ãã¾ã›ã‚“\nREFãƒ¢ãƒ¼ãƒ‰ã§å†è©¦è¡Œã—ã¾ã™", NULL, MB_OK);
 		if (FAILED(pD3d->CreateDevice(D3DADAPTER_DEFAULT, D3DDEVTYPE_REF, hWnd, D3DCREATE_MIXED_VERTEXPROCESSING, &d3dpp, &pDevice))) {
-			MessageBox(0, "DIRECT3DƒfƒoƒCƒX‚Ìì¬‚É¸”s‚µ‚Ü‚µ‚½", NULL, MB_OK);
+			MessageBox(0, "DIRECT3Dãƒ‡ãƒã‚¤ã‚¹ã®ä½œæˆã«å¤±æ•—ã—ã¾ã—ãŸ", NULL, MB_OK);
 			return E_FAIL;
 		}
 
 		if (FAILED(D3DXCreateTextureFromFileEx(pDevice, NULL, 100, 100, 0, 0, D3DFMT_UNKNOWN, D3DPOOL_DEFAULT, D3DX_FILTER_NONE, D3DX_DEFAULT, NULL, NULL, NULL, &pTexture))) {
-			MessageBox(0, "ƒeƒNƒXƒ`ƒƒ‚Ìì¬‚É¸”s‚µ‚Ü‚µ‚½", "", MB_OK);
+			MessageBox(0, "ãƒ†ã‚¯ã‚¹ãƒãƒ£ã®ä½œæˆã«å¤±æ•—ã—ã¾ã—ãŸ", "", MB_OK);
 			return E_FAIL;
 		}
 
