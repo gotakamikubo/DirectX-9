@@ -220,6 +220,7 @@ HRESULT InitDinput(HWND hWnd) {
 	if(FAILED(hr = DirectInput8Create(GetModuleHandle(NULL), DIRECTINPUT_VERSION, IID_IDirectInput8, (VOID * *)& pDinput, NULL))) {
 		return hr;
 	}
+
 	if (FAILED(hr = pDinput->CreateDevice(GUID_SysKeyboard,&pKeyDevice, NULL))) {
 		return hr;
 	}
@@ -270,13 +271,11 @@ void UpdateKeyStatus() {
 
 	if ((hr == DI_OK) || (hr == S_FALSE)) {
 
-		
 		pKeyDevice->GetDeviceState(sizeof(KeyState), &KeyState);
 
 	}
 
 }
-
 
 bool GetKeyStatus(int KeyNumber) {
 	if (KeyState[KeyNumber] & 0x80) {
